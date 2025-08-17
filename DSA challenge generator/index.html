@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA Daily Challenge</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f1f4f8;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .challenge-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+    .btn {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #2980b9;
+    }
+    .msg {
+      display: none;
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔥 Daily DSA Challenge</h1>
+
+  <div class="challenge-box" id="challengeBox">
+    <!-- Challenge will be loaded here -->
+  </div>
+
+  <script>
+    const challenges = [
+      {
+        title: "1️⃣ Reverse an Array",
+        question: "Write a JavaScript function that reverses an array without using built-in reverse().",
+        story: "Sara has a bookshelf with books ordered by year. She wants to rearrange them from latest to oldest but only remembers how to loop, not fancy methods.",
+        example: "Input: [1, 2, 3, 4] → Output: [4, 3, 2, 1]"
+      },
+      {
+        title: "2️⃣ Find Maximum in Array",
+        question: "Write a JS function to find the largest number in an array.",
+        story: "Ali wants to know which of his test scores was the highest. He stored them in an array.",
+        example: "Input: [10, 90, 20] → Output: 90"
+      },
+      {
+        title: "3️⃣ Check Palindrome",
+        question: "Write a function that checks if a string is a palindrome (same forward and backward).",
+        story: "Noor is designing a game and needs to know if user names are palindromes for bonus points.",
+        example: "Input: 'madam' → Output: true"
+      },
+      {
+        title: "4️⃣ Count Even Numbers",
+        question: "Write a JS function to count how many even numbers are in an array.",
+        story: "Rehan has a lucky draw list but only wants even-numbered tickets. Help him count them!",
+        example: "Input: [1, 2, 3, 4, 6] → Output: 3"
+      },
+      {
+        title: "5️⃣ Sum of All Elements",
+        question: "Write a function to return the sum of all numbers in an array.",
+        story: "Zara is tracking her daily step counts and wants to know her total steps in a week.",
+        example: "Input: [1000, 2000, 3000] → Output: 6000"
+      }
+    ];
+
+    let currentChallengeIndex = 0;
+
+    function generateChallenge() {
+      const challenge = challenges[currentChallengeIndex];
+      const box = document.getElementById("challengeBox");
+      box.innerHTML = `
+        <h2>${challenge.title}</h2>
+        <p><strong>📚 Story:</strong> ${challenge.story}</p>
+        <p><strong>❓ Question:</strong> ${challenge.question}</p>
+        <p><strong>💡 Example:</strong> ${challenge.example}</p>
+        <button class="btn" onclick="markAsDone(this)">✅ Mark as Done</button>
+        <div class="msg">🎉 Challenge marked as done!</div>
+      `;
+    }
+
+    function markAsDone(button) {
+      const msg = button.nextElementSibling;
+      msg.style.display = "block";
+
+      setTimeout(() => {
+        currentChallengeIndex = (currentChallengeIndex + 1) % challenges.length;
+        generateChallenge();
+      }, 2000);
+    }
+
+    // Show first challenge on page load
+    generateChallenge();
+  </script>
+</body>
+</html>
